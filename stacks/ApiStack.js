@@ -14,7 +14,7 @@ export function ApiStack({ stack, app }) {
       },
     },
     routes: {
-      "POST /posts": "function/create.main",
+      "POST /posts": "functions/create.main",
     },
   });
 
