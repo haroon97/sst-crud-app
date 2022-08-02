@@ -1,3 +1,5 @@
+import errorStatements from "./error";
+
 export default function handler(lambda) {
   return async function (event, context) {
     let body, statusCode;
@@ -8,8 +10,9 @@ export default function handler(lambda) {
         statusCode = 200;
         body = JSON.stringify(body);
       } else {
-        statusCode = 400;
-        body = JSON.stringify({error: "Bad Request"})
+        const error = errorStatements(event.requestContext.http.method);
+        statusCode = error.statusCode;
+        body = JSON.stringify(error.body);
       }
     } catch (e) {
       body = { error: e.message };
