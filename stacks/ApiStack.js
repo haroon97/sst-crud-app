@@ -18,6 +18,7 @@ export function ApiStack({ stack, app }) {
       "GET /posts/{id}": "functions/get.main",
       "GET /posts": "functions/list.main",
       "PUT /posts/{id}": "functions/update.main",
+      "DELETE /posts/{id}": "functions/delete.main",
     },
   });
 
